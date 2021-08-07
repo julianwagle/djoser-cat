@@ -1,0 +1,40 @@
+# General
+# ------------------------------------------------------------------------------
+# DJANGO_READ_DOT_ENV_FILE=True
+DJANGO_SETTINGS_MODULE=config.settings.production
+DJANGO_SECRET_KEY=pC41D7hn4nSHi4mxqaJwzwR5FIFJJUupBWorLodpZejqdigzp1pniJbUGXomFJzw
+DJANGO_ADMIN_URL=BahqSDM4snXl4CtTkWOJGwHpDLPyuhr8/
+DJANGO_ALLOWED_HOSTS=.bare_bones.com
+
+# Security
+# ------------------------------------------------------------------------------
+# TIP: better off using DNS, however, redirect is OK too
+DJANGO_SECURE_SSL_REDIRECT=False
+
+# Email
+# ------------------------------------------------------------------------------
+DJANGO_SERVER_EMAIL=django.core.mail.backends.smtp.EmailBackend
+
+MAILGUN_API_KEY=
+MAILGUN_DOMAIN=mail.bare_bones.com
+
+
+
+# GCP
+# ------------------------------------------------------------------------------
+GOOGLE_APPLICATION_CREDENTIALS=
+DJANGO_GCP_STORAGE_BUCKET_NAME=
+
+# django-allauth
+# ------------------------------------------------------------------------------
+DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+
+# Gunicorn
+# ------------------------------------------------------------------------------
+WEB_CONCURRENCY=4
+
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+

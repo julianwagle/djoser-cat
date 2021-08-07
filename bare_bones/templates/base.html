@@ -1,0 +1,51 @@
+{% load static i18n %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}bare bones{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Behold, the magnificent BARE BONES!!!">
+    <meta name="author" content="barele bonesian">
+  </head>
+
+  <body>
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+          {% endfor %}
+      {% endif %}
+
+      {% block content %}
+      <p>Go the port 3000 or check out the folowing urls:</p>
+
+      <ul>
+        <li>users/</li>
+        <li>rest-auth/login/ (POST)</li>
+          <dt>POST: username, email, password</dt>
+          <dt>Returns: Token Key</dt>
+        <li>rest-auth/logout/ (POST)</li>
+          <dt>NOTE: ACCOUNT_LOGOUT_ON_GET = True to allow logout using GET </dt>
+        <li>rest-auth/password/reset/ (POST)</li>
+          <dt>POST: email</dt>
+        <li>rest-auth/password/reset/confirm/ (POST)</li>
+          <dt>POST: uid, token, new_password1, new_password2</dt>
+          <dt>NOTE: uid and token are sent in email after calling /rest-auth/password/reset/</dt>
+        <li>rest-auth/password/change/ (POST)</li>
+          <dt>POST: new_password1, new_password2, old_password</dt>
+          <dt>NOTE: OLD_PASSWORD_FIELD_ENABLED = True to use old_password.</dt>
+          <dt>NOTE: LOGOUT_ON_PASSWORD_CHANGE = False to keep the user logged in after password change</dt>
+        <li>rest-auth/user/ (GET, PUT, PATCH)</li>
+          <dt>POST: username, first_name, last_name</dt>
+          <dt>Returns: pk, username, email, first_name, last_name</dt>
+    
+        <li>rest-auth/registration/ (POST)</li>
+          <dt>POST: username,password1,password2, email</dt>
+        <li>rest-auth/registration/verify-email/ (POST)</li>
+          <dt>POST: key</dt>
+
+      </ul>
+
+      {% endblock content %}
+  </body>
+</html>

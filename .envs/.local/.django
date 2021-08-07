@@ -1,0 +1,11 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+
+# Email
+# ------------------------------------------------------------------------------
+DJANGO_SERVER_EMAIL=django.core.mail.backends.smtp.EmailBackend
+
+MAILGUN_API_KEY=
+MAILGUN_DOMAIN=mail.bare_bones.com

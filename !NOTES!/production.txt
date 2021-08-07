@@ -1,0 +1,27 @@
+cd ../; rsync -avz --exclude-from=bare_bones/exclude.txt bare_bones/ root@40.114.177.156:/root/bare_bones/; ssh root@40.114.177.156;
+
+cd ../; 
+rsync -avz --exclude-from=bare_bones/exclude.txt bare_bones/ root@40.114.177.156:/root/bare_bones/;
+ssh root@40.114.177.156;
+
+cd bare_bones;
+sudo docker-compose -f production.yml down; sudo docker-compose -f production.yml up --build
+sudo docker-compose -f production.yml logs; sudo docker-compose -f production.yml ps
+sudo docker-compose -f production.yml run django python manage.py shell
+sudo docker-compose -f production.yml run django python manage.py createsuperuser
+
+helpful commands
+================
+# https://stackoverflow.com/questions/53902507/unknown-error-session-deleted-because-of-page-crash-from-unknown-error-cannot
+sudo mount -t tmpfs -o rw,nosuid,nodev,noexec,relatime,size=512M tmpfs /dev/shm
+
+system docker prune -af;
+systemctl restart docker
+rm -rd bare_bones/
+
+docker ps # note containerid == ${CID} below
+export CID=<CID ABOVE>
+docker cp ${CID}:/app/celery_data ./celery_data
+
+rsync -avz root@40.114.177.156:/root/bare_bones/celery_data celery_daya/
+
